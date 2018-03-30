@@ -22,21 +22,29 @@ class App(Tk):
 		self.resizable(0, 0)
 		self.protocol("WM_DELETE_WINDOW", self.on_exit)
 
-def run(self):
-	s = settings.read_settings(".settings.ini")
-		if s != "":
-			for i in range(len(s)):
-				temp = s[i].split("=")
-				if temp[0] == "if":
-					self.txt_if_text.set(temp[1])
-				elif temp[0] == "of":
-					self.txt_of_text.set(temp[1])
-				elif temp[0] == "bs":
-					self.txt_bs_text.set(temp[1])
-				else:
-					settings.write_settings(".settings.ini", ["if=/dev/...", "of=/home/...", "bs=4M"])
+	def run(self):
+		s = settings.read_settings(".settings.ini")
+			if s != "":
+				for i in range(len(s)):
+					temp = s[i].split("=")
+					if temp[0] == "if":
+						self.txt_if_text.set(temp[1])
+					elif temp[0] == "of":
+						self.txt_of_text.set(temp[1])
+					elif temp[0] == "bs":
+						self.txt_bs_text.set(temp[1])
+					else:
+						settings.write_settings(".settings.ini", ["if=/dev/...", "of=/home/...", "bs=4M"])
 
-				self.mainloop()
+					self.mainloop()
+
+	def on_exit(self):
+		self.zapisz_ustawienia()
+		self.destroy()
+
+    def zapisz_ustawienia(self):
+        settings.write_settings(".settings.ini", ["if=" + "of=" + "bs=" +])
+    
         
 
 if __name__ == "__main__":
