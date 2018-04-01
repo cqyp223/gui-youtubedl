@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 # Author: Łukasz Marcińczak
-# date: 2018-03-30
+# date: 2018-04-01
 
 
 import sys
 from Tkinter import *
+# from tkFileDialog import askoopenfilename
 
 
 __wersja = "v2.0"
@@ -21,6 +22,10 @@ class App(Tk):
 		self.title(title)
 		self.resizable(0, 0)
 		self.protocol("WM_DELETE_WINDOW", self.on_exit)
+		
+		self.txt_if_text = StringVar()
+		self.txt_of_numer_text = StringVar()
+		self.txt_bs_text = StringVar()
 
 	def run(self):
 		s = settings.read_settings(".settings.ini")
@@ -42,8 +47,8 @@ class App(Tk):
 		self.zapisz_ustawienia()
 		self.destroy()
 
-    def zapisz_ustawienia(self):
-        settings.write_settings(".settings.ini", ["if=" + "of=" + "bs=" +])
+	def zapisz_ustawienia(self):
+		settings.write_settings(".settings.ini", ["if=" + "of=" + "bs=" +])
     
         
 
