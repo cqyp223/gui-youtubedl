@@ -26,6 +26,10 @@ class App(Tk):
 		self.txt_if_text = StringVar()
 		self.txt_of_numer_text = StringVar()
 		self.txt_bs_text = StringVar()
+		
+		self.txt_if = Entry(self, textvariable=self.txt_if_text).grid(row=0, column=1, sticky=E+W)
+		self.txt_of = Entry(self, textvariable=self.txt_of_numer_text).grid(row=1, column=1, sticky=E+W)
+		self.txt_bs = Entry(self, textvariable=self.txt_bs_text).grid(row=2, column=1, sticky=E+W)
 
 	def run(self):
 		s = settings.read_settings(".settings.ini")
@@ -48,7 +52,7 @@ class App(Tk):
 		self.destroy()
 
 	def zapisz_ustawienia(self):
-		settings.write_settings(".settings.ini", ["if=" + "of=" + "bs=" +])
+		settings.write_settings(".settings.ini", ["if=" + self.txt_if_text.get() "of=" + self.txt_of_text.get() "bs=" + self.txt_bs_text.get()])
     
         
 
