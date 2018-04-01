@@ -7,6 +7,7 @@
 
 import sys
 import settings
+import youtube_dl as ydl
 from Tkinter import *
 # from tkFileDialog import askoopenfilename
 
@@ -46,6 +47,17 @@ class App(Tk):
 				else:
 					settings.write_settings(".settings.ini", ["if=/dev/...", "of=/home/...", "bs=4M"])
 
+		self.youtube = ydl.YoutubeDl({"outtmp1": "%(id)s%(ext)s"})
+		with self.youtube:
+			self.result = youtube.extract_info("https://www.youtube.com/watch?v=F57P9C4SAW4", download=False)
+		
+		if "enteries" in self.result:
+			video = self.result["enteries"][0]
+		else:
+			video = result
+			
+		print(video)
+		
 		self.mainloop()
 
 	def on_exit(self):
